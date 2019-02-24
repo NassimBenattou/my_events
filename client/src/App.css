@@ -1,0 +1,53 @@
+h1{
+  margin: 0;
+  padding: 10px;
+}
+
+.App {
+  height: 100px;
+  background-color: #8acdea;
+}
+
+ul.header li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+}
+
+ul.header {
+  background-color: #111;
+  padding: 0;
+}
+ul.header li a {
+  color: #FFF;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+}
+
+.location{
+  text-align: center;
+}
+
+#connect{
+  border: 1px solid black;
+  list-style-type: none;
+  width: 80%;
+  float: right;
+  text-align: left;
+}
+
+#connect h2{
+  text-align: center;
+}
+
+#connect img{
+  float: left;
+}
+
+#connect p{
+  width: 75%;
+  float: right;
+  margin-right: 10px;
+}
