@@ -15,16 +15,17 @@ var connection = mysql.createConnection({
 
 app.post('/user_connect', function (req, res) {
 
-    console.log(req.body.data.name);
+    //récupération des données facebook
 
     var data = [
-        [
-        req.body.data.id_user, 
+        [ 
         req.body.data.name, 
         req.body.data.email, 
         req.body.data.picture
         ],
     ];
+
+    //insertion en bdd
     
     connection.query("INSERT INTO users (id_user, name, email, picture) VALUES ?", [data], function(err, result){
     console.log('ok');

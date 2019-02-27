@@ -23,6 +23,8 @@ class LoginFacebook extends Component {
 
   responseFacebook = response => {
 
+    var url = "http://localhost:5000/user-connect"
+
     this.setState({
       isLoggedIn: true,
       userID: response.userID,
@@ -38,8 +40,11 @@ class LoginFacebook extends Component {
       picture: this.state.picture
     }
 
-    axios.post("http://localhost:5000/user_connect", { data });
-    console.log(response);
+    //Envoi des données facebook vers le back pour insérer en bdd et les envoient vers le parent "App.js"
+
+    axios.post(url, {data});
+
+    this.props.handleProfil(data);
   }
 
   componentClicked = () => console.log("clicked");
@@ -47,6 +52,8 @@ class LoginFacebook extends Component {
   render() {
 
     let fbContent;
+
+    ///Affichage du bouton login si vous êtes connecté
 
     if(this.state.isLoggedIn){
       fbContent = null;
@@ -63,6 +70,8 @@ class LoginFacebook extends Component {
     
     return (
       
+      //Bouton login
+
       <div>{fbContent}</div>
     
     );

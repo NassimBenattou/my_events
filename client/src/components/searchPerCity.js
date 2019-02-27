@@ -15,6 +15,8 @@ class SearchCity extends Component {
     }
   }
 
+  //Récupère la ville entrée et l'envoie vers le parent "App.js"
+
   handleChange(event){
 
     this.setState({
@@ -26,20 +28,12 @@ class SearchCity extends Component {
     
   }
 
-  /*handleSubmit(event){
-    
-    event.preventDefault();
-
-    
-  }*/
-  
   render() {
     
     return (
       
-      <div className="location">
-        <input type="text" placeholder="Ville" onChange={this.handleChange.bind(this)} value={this.state.city}/>
-        <p id="demo"></p>
+      <div id="city" class="col col-lg-2">
+        <input class="form-control" type="text" placeholder="Ville" onChange={this.handleChange.bind(this)} value={this.state.city}/>
       </div>
     
     );

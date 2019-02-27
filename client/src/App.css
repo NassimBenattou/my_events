@@ -4,7 +4,7 @@ h1{
 }
 
 .App {
-  height: 100px;
+  height: 150px;
   background-color: #8acdea;
 }
 
@@ -14,10 +14,6 @@ ul.header li {
   margin: 0;
 }
 
-ul.header {
-  background-color: #111;
-  padding: 0;
-}
 ul.header li a {
   color: #FFF;
   font-weight: bold;
@@ -36,6 +32,12 @@ ul.header li a {
   width: 80%;
   float: right;
   text-align: left;
+  margin-top: 20px;
+}
+
+#connect div{
+  display: flex;
+  justify-content: center;
 }
 
 #connect h2{
@@ -47,7 +49,24 @@ ul.header li a {
 }
 
 #connect p{
-  width: 75%;
+  width: 70%;
   float: right;
   margin-right: 10px;
+}
+
+#connect button{
+  float: right;
+  margin-right: 10px;
+}
+
+#profil{
+  float: right;
+}
+
+#city, #search{
+  margin-top: 10px;
+}
+
+#list-category{
+  margin-top: 100px;
 }

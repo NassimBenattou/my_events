@@ -18,6 +18,8 @@ class Category extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  //Récupération de la liste des catégories
+
   componentDidMount(){
 
     var url = "https://www.eventbriteapi.com/v3/categories/?token=Y32PY3YKFBEXGAB5IZVR";
@@ -34,6 +36,8 @@ class Category extends Component {
     })
   }
 
+  //Récupère l'id de la catégorie séléctionnée et l'envoi vers le parent "App.js"
+
   handleChange(event){
     
     this.setState({value: event.target.value}, () => {
@@ -44,10 +48,12 @@ class Category extends Component {
 
   render() {
     return (
-      <div className="category">
-        <select value={this.state.value} onChange={this.handleChange}>
+      <div id="list-category" class="col col-lg-2">
+        <select class="form-control" value={this.state.value} onChange={this.handleChange}>
           <option value="">Catégories</option>
           {        
+            //Listing des catégories
+
             this.state.categories.map((categories, index) =>
               <option key={index} value={categories.id}>{categories.name}</option>
             )

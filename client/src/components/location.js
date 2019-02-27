@@ -15,7 +15,8 @@ class Location extends Component {
         longitude: '',
         events: [],
         id_events: '',
-        singleEvent: []
+        singleEvent: [],
+        profil: []
     }
 
     this.showPosition = this.showPosition.bind(this);
@@ -23,6 +24,8 @@ class Location extends Component {
   }
   
   getLocation(position) {
+
+    //Récupération des événements par ville et catégories
 
     if (navigator.geolocation) {
 
@@ -45,6 +48,8 @@ class Location extends Component {
           }
         })
       }
+
+      //Récupération des événements par géolocalisation et catégories
 
       else{
         
@@ -69,6 +74,8 @@ class Location extends Component {
     } 
   }
 
+  //Récupère la position actuelle
+
   showPosition() {
     navigator.geolocation.getCurrentPosition(this.getLocation);
 
@@ -76,6 +83,8 @@ class Location extends Component {
       singleEvent: []
     })
   }
+
+  //Choisir un événements avec son id
 
   handleClick(event){
 
@@ -112,32 +121,37 @@ class Location extends Component {
     return (
       
       <div className="location">
-        <p>Trouvez des événements autour de chez vous</p>
-        <button onClick={this.showPosition}>Chercher</button>
-      
+        <div class="col col-lg-2">
+          <button class="btn btn-primary" id="search" onClick={this.showPosition}>Chercher</button>
+        </div>
         <p id="demo"></p>
-        {        
+        {      
+          //Listing des événements
+
           this.state.events.map((events, index) =>
-              <li key={index} value='test' id="connect">
-                <h2>{events.name.text}</h2> 
-                <p>{events.description.text.substring(0, 200)+"..."}</p>
-                {events.logo === null ? '' : <img src={events.logo.url} /> }
-                <button id={events.id} onClick={this.handleClick.bind(this)}>En savoir +</button>
+              <li className="border rounded" key={index} id="connect">
+                <div className='row'>
+                <h2>{events.name.text}</h2>
+                {events.description.text === null ? '' :<div><p id="desc">{events.description.text.substring(0, 200)+"...Lire la suite..."}</p></div>}
+                {events.logo === null ? '' : <div className="col-6"><img src={events.logo.url} /></div> }
+                
+                
+                </div> <button class="btn btn-warning" id={events.id} onClick={this.handleClick.bind(this)}>En savoir +</button>
               </li>
           )
         }
-        {        
+        {      
+          //Affichage d'un seul événement
+            
           this.state.singleEvent.map((events, index) =>
-              <li key={index} value='test' id="connect">
+              <li key={index} id="connect">
                 <h2>{events.name.text}</h2> 
                 <p>{events.description.text}</p>
                 {events.logo === null ? '' : <img src={events.logo.url} /> }
-                <button id={events.id} onClick={this.handleClick.bind(this)}>En savoir +</button>
+                <button class="btn btn-warning" id={events.id} onClick={this.handleClick.bind(this)}>En savoir +</button>
               </li>
           )
         }
-        
-        
       </div>
     
     );
